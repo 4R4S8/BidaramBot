@@ -1,0 +1,6 @@
+.env
+bidaram-env/
+BidaramBot.ipynb
+BidaramBot.py
+DockerFile
+test.py

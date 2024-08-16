@@ -1,4 +1,5 @@
 # %%
+from dotenv import load_dotenv
 import os 
 import telebot 
 import datetime as dt 
@@ -9,8 +10,9 @@ from pymongo.errors import ConnectionFailure
 
 # %%
 # Get API token from a secure environment variable 
-BOT_TOKEN = '7350608336:AAHgBaJR9Vqj2Bl6Mah6XMl_G6G9hPn1gHA' 
- 
+
+load_dotenv()
+BOT_TOKEN = os.environ.get('BOT_API_KEY')
 if not BOT_TOKEN: 
     raise ValueError("Please set the TELEGRAM_BOT_TOKEN environment variable") 
  
@@ -73,6 +75,7 @@ def handle_start(message):
 
 @bot.message_handler(commands=['bidaram'])
 def handle_bidaram(message):
+    print('------------------------------------------')
     global use_mongodb
     chat_id = message.chat.id
     current_datetime_persian = get_current_persian_datetime() 
